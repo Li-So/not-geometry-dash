@@ -17,3 +17,5 @@ function draw() {
         characterY = characterY + 1;
     }
 }
+
+okpijhlgyutfhytfugihojpkål¨pkojihlugykftdhrsrdcyfugihoj
