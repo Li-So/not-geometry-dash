@@ -12,11 +12,12 @@ const testPlatform = new Platform(100, 100, 100, 50);
 function draw() {
     background("grey");
     gameCharacter.draw();
-	testPlatform.draw();
+    testPlatform.draw();
 
     if (gameCharacter.yPos + gameCharacter.height < 500) {
         gameCharacter.fall();
     }
+
 }
 
 function keyPressed() {
