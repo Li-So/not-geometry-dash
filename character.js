@@ -16,6 +16,10 @@ export default class Character {
     }
 
     jump() {
-        this.yPos -= 20;
+        this.yPos -= 1000;
+    }
+
+    fall() {
+        this.yPos += 20;
     }
 }
