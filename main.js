@@ -1,26 +1,37 @@
 import Character from "./character";
 import Platform from "./platform";
+import Button from "./button";
 
 function setup() {
     createCanvas(500, 500);
 }
 
+// Define what states the game has
 const gameState = {
     win: "gameWon",
-    start: "startScreen",
+	lose: "gameLose",
+    intro: "gameIntro",
     active: "gameActive",
 };
 
-let currentGameState = gameState.start;
+//  Track the current gamestate, intro by default
+let currentGameState = gameState.intro;
+
+// Make a new character
 const gameCharacter = new Character(100, 300, 100, 100);
 
+// Make a test platform
 const testPlatform = new Platform(100, 100, 100, 50);
+
+// Make an introductory button
+const startButton = new Button(100, 100, 200, 100);
 
 function draw() {
     background("grey");
 
-    if (currentGameState === gameState.start) {
-        rect(100, 100, 200, 100);
+    if (currentGameState === gameState.intro) {
+		startButton.draw();
+        
     } else if (currentGameState === gameState.active) {
         gameCharacter.draw();
         testPlatform.draw();
@@ -38,11 +49,8 @@ function keyPressed() {
 }
 
 function mouseClicked(){
-	if(currentGameState === gameState.start &&
-		mouseX < 300 && 
-		mouseX > 100 &&
-		 mouseY < 200 &&
-		  mouseY > 100){
+	if(currentGameState === gameState.intro &&
+		startButton.isHovered()){
 		currentGameState = gameState.active;
 	}
 }
