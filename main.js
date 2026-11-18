@@ -40,10 +40,9 @@ function keyPressed() {
 function mouseClicked(){
 	if(currentGameState === gameState.start &&
 		mouseX < 300 && 
-		mouseX > 200 &&
+		mouseX > 100 &&
 		 mouseY < 200 &&
 		  mouseY > 100){
 		currentGameState = gameState.active;
 	}
-		console.log("not");
 }
