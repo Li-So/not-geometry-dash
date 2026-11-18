@@ -16,10 +16,23 @@ export default class Character {
     }
 
     jump() {
-        this.yPos -= 1000;
+        this.yPos -= 100;
     }
 
     fall() {
         this.yPos += 20;
+    }
+
+    // Moved from platforms since we care more about the character and it's collision
+    // 5 set as arbitrary value, receiving objects since we'll input platforms
+    isColliding(object) {
+        if (
+            Math.abs(this.yPos + this.height - object.yPos) < 5 &&
+            this.xPos + this.width >= object.xPos &&
+            this.xPos <= object.xPos + object.width
+        ) {
+            return true;
+        }
+        return false;
     }
 }
