@@ -1,6 +1,7 @@
 import Character from "./character";
 import Platform from "./platform";
 import Button from "./button";
+import MovingPlatform from "./movingPlatform";
 
 function setup() {
     createCanvas(500, 500);
@@ -20,8 +21,11 @@ let currentGameState = gameState.intro;
 // Make a new character
 const gameCharacter = new Character(100, 300, 100, 100);
 
-// Make a test platform
-const testPlatform = new Platform(100, 100, 100, 50);
+let platforms = [
+    new Platform(100, 220, 100, 50),
+    new MovingPlatform(220, 300, 100, 50),
+    new Platform(340, 270, 100, 50),
+];
 
 // Make an introductory button
 const startButton = new Button(100, 150, 200, 100, "Start");
@@ -32,12 +36,20 @@ function draw() {
     if (currentGameState === gameState.intro) {
         startButton.draw();
     } else if (currentGameState === gameState.active) {
+        for (const platform of platforms) {
+            platform.draw();
+
+            if (platform.bounce) {
+                platform.bounce();
+            }
+        }
+
         gameCharacter.draw();
-        testPlatform.draw();
 
         if (
-            gameCharacter.yPos + gameCharacter.height < 500 &&
-            !gameCharacter.isColliding(testPlatform)
+            gameCharacter.yPos + gameCharacter.height <
+            500 //&&
+            //!gameCharacter.isColliding(testPlatform)
         ) {
             gameCharacter.fall();
         }

@@ -14,6 +14,4 @@ export default class Platform {
     draw() {
         rect(this.xPos, this.yPos, this.width, this.height);
     }
-
-	
 }
