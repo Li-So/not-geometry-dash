@@ -24,7 +24,7 @@ const gameCharacter = new Character(100, 300, 100, 100);
 const testPlatform = new Platform(100, 100, 100, 50);
 
 // Make an introductory button
-const startButton = new Button(100, 100, 200, 100);
+const startButton = new Button(100, 150, 200, 100, "Start");
 
 function draw() {
     background("grey");
