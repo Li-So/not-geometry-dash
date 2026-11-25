@@ -38,6 +38,7 @@ function draw() {
     } else if (currentGameState === gameState.active) {
         for (const platform of platforms) {
             platform.draw();
+            platform.move();
 
             if (platform.bounce) {
                 platform.bounce();
