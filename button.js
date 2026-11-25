@@ -21,7 +21,7 @@ export default class Button {
         text(
             this.text,
             this.width + this.xPos - Math.abs(this.width - this.xPos),
-            this.yPos + this.height - Math.abs(this.height - this.yPos),
+            this.yPos + this.height - Math.abs(this.height - this.yPos)
         );
         pop();
     }
