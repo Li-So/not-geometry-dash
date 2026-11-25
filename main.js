@@ -9,7 +9,7 @@ function setup() {
 // Define what states the game has
 const gameState = {
     win: "gameWon",
-	lose: "gameLose",
+    lose: "gameLose",
     intro: "gameIntro",
     active: "gameActive",
 };
@@ -30,13 +30,15 @@ function draw() {
     background("grey");
 
     if (currentGameState === gameState.intro) {
-		startButton.draw();
-        
+        startButton.draw();
     } else if (currentGameState === gameState.active) {
         gameCharacter.draw();
         testPlatform.draw();
 
-        if (gameCharacter.yPos + gameCharacter.height < 500) {
+        if (
+            gameCharacter.yPos + gameCharacter.height < 500 &&
+            !gameCharacter.isColliding(testPlatform)
+        ) {
             gameCharacter.fall();
         }
     } else {
@@ -48,9 +50,8 @@ function keyPressed() {
     gameCharacter.jump();
 }
 
-function mouseClicked(){
-	if(currentGameState === gameState.intro &&
-		startButton.isHovered()){
-		currentGameState = gameState.active;
-	}
+function mouseClicked() {
+    if (currentGameState === gameState.intro && startButton.isHovered()) {
+        currentGameState = gameState.active;
+    }
 }
